@@ -312,6 +312,10 @@
 
 			var obj; // 플레이어 객체 전역으로 지정
 			var GoalPos;
+			var hitted = false;
+			var hitCheck = false;
+			var dead = false;
+			var exit = false;
 
 			// Lights
 
@@ -464,22 +468,22 @@
 								//Manage the movements of the character (e.g. position, direction)
 								if (inputMap["w"]) {
 									obj.rotation.y = 180 / 180 * Math.PI + walk_dir;
-									obj.moveWithCollisions(obj.forward.scaleInPlace(heroSpeed));
+									obj.moveWithCollisions(obj.forward.scaleInPlace(heroSpeed - (hitted * 0.2) - (dead * 0.3)));
 									keydown = true;
 								}
 								if (inputMap["s"]) {
 									obj.rotation.y = 0 / 180 * Math.PI + walk_dir;
-									obj.moveWithCollisions(obj.forward.scaleInPlace(heroSpeed));
+									obj.moveWithCollisions(obj.forward.scaleInPlace(heroSpeed - (hitted * 0.2) - (dead * 0.3)));
 									keydown = true;
 								}
 								if (inputMap["a"]) {
 									obj.rotation.y = 90 / 180 * Math.PI + walk_dir;
-									obj.moveWithCollisions(obj.forward.scaleInPlace(heroSpeed));
+									obj.moveWithCollisions(obj.forward.scaleInPlace(heroSpeed - (hitted * 0.2) - (dead * 0.3)));
 									keydown = true;
 								}
 								if (inputMap["d"]) {
 									obj.rotation.y = -90 / 180 * Math.PI + walk_dir;
-									obj.moveWithCollisions(obj.forward.scaleInPlace(heroSpeed));
+									obj.moveWithCollisions(obj.forward.scaleInPlace(heroSpeed - (hitted * 0.2) - (dead * 0.3)));
 									keydown = true;
 								}
 								if (inputMap["b"]) {
@@ -487,9 +491,12 @@
 								}
 
 								var n1 = newPosition(obj.position.x, obj.position.z);
-								console.log("Player: " + n1.x + " " + n1.z);
-								if (n1.x == GoalPos.x && n1.z == GoalPos.z) {
+								// console.log("Player: " + n1.x + " " + n1.z);
+								if (n1.x == GoalPos.x && n1.z == GoalPos.z && !exit) {
+									exit = true;
 									console.log("Goal!");
+									dead = true;
+									hitted = true;
 								}
 							});
 
@@ -563,9 +570,25 @@
 										movedForward = true;
 									}
 								}
+
 								var n1 = newPosition(obj2.position.x, obj2.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									console.log("Hitted by obj2");
+									if (hitted && !hitCheck) {
+										console.log("You Die!");
+										hitCheck = true;
+										dead = true;
+									}
+									else if (!hitCheck) {
+										console.log("Hitted by obj2");
+										hitted = true;
+										hitCheck = true;
+									} else {
+
+									}
+								} else {
+									if (hitCheck && !dead) {
+										hitCheck = false;
+									}
 								}
 							});
 						});
