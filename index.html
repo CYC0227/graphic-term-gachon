@@ -525,22 +525,23 @@
 							// });
 						});
 
-						// 좀비객체 테스트 생성
+						// 유령객체 생성
 						BABYLON.SceneLoader.ImportMesh("", temp_dir, gltf_data2, scene, function (newMeshes, particleSystems, skeletons) {
 							//  scene.createDefaultCameraOrLight(true);
-							var obj2 = newMeshes[0];
-							obj2.rotationQuaternion = undefined;
-							obj2.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
-							obj2.position = new BABYLON.Vector3(-120, y, -80);  // 1칸의 크기는 8
+							var ghost = newMeshes[0];
+							var ghostX = -120, ghostZ = -80;
+							ghost.rotationQuaternion = undefined;
+							ghost.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
+							ghost.position = new BABYLON.Vector3(ghostX, y, ghostZ);  // 1칸의 크기는 8
 
 
-							obj2.rotation.y = 0 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
+							ghost.rotation.y = 0 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
 							//camera.target = obj;
 							//scene.createDefaultCamera(0, 0, 0);
 							var shadowGenerator = new BABYLON.ShadowGenerator(512, light0);
 							shadowGenerator.useContactHardeningShadow = true;
-							shadowGenerator.addShadowCaster(obj2);
-							obj2.receiveShadows = true;
+							shadowGenerator.addShadowCaster(ghost);
+							ghost.receiveShadows = true;
 
 
 							var heroSpeed = 0.2;
@@ -553,25 +554,21 @@
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
 								if (movedForward) {
-									obj2.position.z += heroSpeed;
-									keydown = true;
-									moved++;
-									if (moved > 64) {
-										moved -= 64;
+									ghost.position.z += heroSpeed;
+									if (ghost.position.z > ghostZ + 8) {
 										movedForward = false;
 									}
+									keydown = true;
 								}
 								else {
-									obj2.position.z -= heroSpeed;
-									keydown = true;
-									moved++;
-									if (moved > 64) {
-										moved -= 64;
+									ghost.position.z -= heroSpeed;
+									if (ghost.position.z < ghostZ - 8) {
 										movedForward = true;
 									}
+									keydown = true;
 								}
 
-								var n1 = newPosition(obj2.position.x, obj2.position.z), n2 = newPosition(obj.position.x, obj.position.z);
+								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
 									if (hitted && !hitCheck) {
 										console.log("You Die!");
@@ -579,7 +576,448 @@
 										dead = true;
 									}
 									else if (!hitCheck) {
-										console.log("Hitted by obj2");
+										console.log("Hitted by ghost");
+										hitted = true;
+										hitCheck = true;
+									} else {
+
+									}
+								} else {
+									if (hitCheck && !dead) {
+										hitCheck = false;
+									}
+								}
+							});
+						});
+						BABYLON.SceneLoader.ImportMesh("", temp_dir, gltf_data2, scene, function (newMeshes, particleSystems, skeletons) {
+							//  scene.createDefaultCameraOrLight(true);
+							var ghost = newMeshes[0];
+							var ghostX = -88, ghostZ = -112;
+							ghost.rotationQuaternion = undefined;
+							ghost.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
+							ghost.position = new BABYLON.Vector3(ghostX, y, ghostZ);  // 1칸의 크기는 8
+
+
+							ghost.rotation.y = 0 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
+							//camera.target = obj;
+							//scene.createDefaultCamera(0, 0, 0);
+							var shadowGenerator = new BABYLON.ShadowGenerator(512, light0);
+							shadowGenerator.useContactHardeningShadow = true;
+							shadowGenerator.addShadowCaster(ghost);
+							ghost.receiveShadows = true;
+
+
+							var heroSpeed = 0.2;
+							var heroSpeedBackwards = 0.2;
+							var heroRotationSpeed = 0.1;
+
+							var movedForward = true;
+							var moved = 0
+
+							scene.onBeforeRenderObservable.add(() => {
+								var keydown = false;
+								if (movedForward) {
+									ghost.position.z += heroSpeed;
+									if (ghost.position.z > ghostZ + 8) {
+										movedForward = false;
+									}
+									keydown = true;
+								}
+								else {
+									ghost.position.z -= heroSpeed;
+									if (ghost.position.z < ghostZ - 8) {
+										movedForward = true;
+									}
+									keydown = true;
+								}
+
+								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
+								if (n1.x == n2.x && n1.z == n2.z) {
+									if (hitted && !hitCheck) {
+										console.log("You Die!");
+										hitCheck = true;
+										dead = true;
+									}
+									else if (!hitCheck) {
+										console.log("Hitted by ghost");
+										hitted = true;
+										hitCheck = true;
+									} else {
+
+									}
+								} else {
+									if (hitCheck && !dead) {
+										hitCheck = false;
+									}
+								}
+							});
+						});
+						BABYLON.SceneLoader.ImportMesh("", temp_dir, gltf_data2, scene, function (newMeshes, particleSystems, skeletons) {
+							//  scene.createDefaultCameraOrLight(true);
+							var ghost = newMeshes[0];
+							var ghostX = -40, ghostZ = -96;
+							ghost.rotationQuaternion = undefined;
+							ghost.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
+							ghost.position = new BABYLON.Vector3(ghostX, y, ghostZ);  // 1칸의 크기는 8
+
+
+							ghost.rotation.y = 0 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
+							//camera.target = obj;
+							//scene.createDefaultCamera(0, 0, 0);
+							var shadowGenerator = new BABYLON.ShadowGenerator(512, light0);
+							shadowGenerator.useContactHardeningShadow = true;
+							shadowGenerator.addShadowCaster(ghost);
+							ghost.receiveShadows = true;
+
+
+							var heroSpeed = 0.2;
+							var heroSpeedBackwards = 0.2;
+							var heroRotationSpeed = 0.1;
+
+							var movedForward = true;
+							var moved = 0
+
+							scene.onBeforeRenderObservable.add(() => {
+								var keydown = false;
+								if (movedForward) {
+									ghost.position.z += heroSpeed;
+									if (ghost.position.z > ghostZ + 8) {
+										movedForward = false;
+									}
+									keydown = true;
+								}
+								else {
+									ghost.position.z -= heroSpeed;
+									if (ghost.position.z < ghostZ - 8) {
+										movedForward = true;
+									}
+									keydown = true;
+								}
+
+								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
+								if (n1.x == n2.x && n1.z == n2.z) {
+									if (hitted && !hitCheck) {
+										console.log("You Die!");
+										hitCheck = true;
+										dead = true;
+									}
+									else if (!hitCheck) {
+										console.log("Hitted by ghost");
+										hitted = true;
+										hitCheck = true;
+									} else {
+
+									}
+								} else {
+									if (hitCheck && !dead) {
+										hitCheck = false;
+									}
+								}
+							});
+						});
+						BABYLON.SceneLoader.ImportMesh("", temp_dir, gltf_data2, scene, function (newMeshes, particleSystems, skeletons) {
+							//  scene.createDefaultCameraOrLight(true);
+							var ghost = newMeshes[0];
+							var ghostX = -8, ghostZ = 0;
+							ghost.rotationQuaternion = undefined;
+							ghost.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
+							ghost.position = new BABYLON.Vector3(ghostX, y, ghostZ);  // 1칸의 크기는 8
+
+
+							ghost.rotation.y = 0 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
+							//camera.target = obj;
+							//scene.createDefaultCamera(0, 0, 0);
+							var shadowGenerator = new BABYLON.ShadowGenerator(512, light0);
+							shadowGenerator.useContactHardeningShadow = true;
+							shadowGenerator.addShadowCaster(ghost);
+							ghost.receiveShadows = true;
+
+
+							var heroSpeed = 0.2;
+							var heroSpeedBackwards = 0.2;
+							var heroRotationSpeed = 0.1;
+
+							var movedForward = true;
+							var moved = 0
+
+							scene.onBeforeRenderObservable.add(() => {
+								var keydown = false;
+								if (movedForward) {
+									ghost.position.z += heroSpeed;
+									if (ghost.position.z > ghostZ + 8) {
+										movedForward = false;
+									}
+									keydown = true;
+								}
+								else {
+									ghost.position.z -= heroSpeed;
+									if (ghost.position.z < ghostZ - 8) {
+										movedForward = true;
+									}
+									keydown = true;
+								}
+
+								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
+								if (n1.x == n2.x && n1.z == n2.z) {
+									if (hitted && !hitCheck) {
+										console.log("You Die!");
+										hitCheck = true;
+										dead = true;
+									}
+									else if (!hitCheck) {
+										console.log("Hitted by ghost");
+										hitted = true;
+										hitCheck = true;
+									} else {
+
+									}
+								} else {
+									if (hitCheck && !dead) {
+										hitCheck = false;
+									}
+								}
+							});
+						});
+						BABYLON.SceneLoader.ImportMesh("", temp_dir, gltf_data2, scene, function (newMeshes, particleSystems, skeletons) {
+							//  scene.createDefaultCameraOrLight(true);
+							var ghost = newMeshes[0];
+							var ghostX = 8, ghostZ = 16;
+							ghost.rotationQuaternion = undefined;
+							ghost.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
+							ghost.position = new BABYLON.Vector3(ghostX, y, ghostZ);  // 1칸의 크기는 8
+
+
+							ghost.rotation.y = 0 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
+							//camera.target = obj;
+							//scene.createDefaultCamera(0, 0, 0);
+							var shadowGenerator = new BABYLON.ShadowGenerator(512, light0);
+							shadowGenerator.useContactHardeningShadow = true;
+							shadowGenerator.addShadowCaster(ghost);
+							ghost.receiveShadows = true;
+
+
+							var heroSpeed = 0.2;
+							var heroSpeedBackwards = 0.2;
+							var heroRotationSpeed = 0.1;
+
+							var movedForward = true;
+							var moved = 0
+
+							scene.onBeforeRenderObservable.add(() => {
+								var keydown = false;
+								if (movedForward) {
+									ghost.position.z += heroSpeed;
+									if (ghost.position.z > ghostZ + 8) {
+										movedForward = false;
+									}
+									keydown = true;
+								}
+								else {
+									ghost.position.z -= heroSpeed;
+									if (ghost.position.z < ghostZ - 8) {
+										movedForward = true;
+									}
+									keydown = true;
+								}
+
+								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
+								if (n1.x == n2.x && n1.z == n2.z) {
+									if (hitted && !hitCheck) {
+										console.log("You Die!");
+										hitCheck = true;
+										dead = true;
+									}
+									else if (!hitCheck) {
+										console.log("Hitted by ghost");
+										hitted = true;
+										hitCheck = true;
+									} else {
+
+									}
+								} else {
+									if (hitCheck && !dead) {
+										hitCheck = false;
+									}
+								}
+							});
+						});
+						BABYLON.SceneLoader.ImportMesh("", temp_dir, gltf_data2, scene, function (newMeshes, particleSystems, skeletons) {
+							//  scene.createDefaultCameraOrLight(true);
+							var ghost = newMeshes[0];
+							var ghostX = 80, ghostZ = -32;
+							ghost.rotationQuaternion = undefined;
+							ghost.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
+							ghost.position = new BABYLON.Vector3(ghostX, y, ghostZ);  // 1칸의 크기는 8
+
+
+							ghost.rotation.y = 0 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
+							//camera.target = obj;
+							//scene.createDefaultCamera(0, 0, 0);
+							var shadowGenerator = new BABYLON.ShadowGenerator(512, light0);
+							shadowGenerator.useContactHardeningShadow = true;
+							shadowGenerator.addShadowCaster(ghost);
+							ghost.receiveShadows = true;
+
+
+							var heroSpeed = 0.2;
+							var heroSpeedBackwards = 0.2;
+							var heroRotationSpeed = 0.1;
+
+							var movedForward = true;
+							var moved = 0
+
+							scene.onBeforeRenderObservable.add(() => {
+								var keydown = false;
+								if (movedForward) {
+									ghost.position.z += heroSpeed;
+									if (ghost.position.z > -8) {
+										movedForward = false;
+									}
+									keydown = true;
+								}
+								else {
+									ghost.position.z -= heroSpeed;
+									if (ghost.position.z < -56) {
+										movedForward = true;
+									}
+									keydown = true;
+								}
+
+								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
+								if (n1.x == n2.x && n1.z == n2.z) {
+									if (hitted && !hitCheck) {
+										console.log("You Die!");
+										hitCheck = true;
+										dead = true;
+									}
+									else if (!hitCheck) {
+										console.log("Hitted by ghost");
+										hitted = true;
+										hitCheck = true;
+									} else {
+
+									}
+								} else {
+									if (hitCheck && !dead) {
+										hitCheck = false;
+									}
+								}
+							});
+						});
+						BABYLON.SceneLoader.ImportMesh("", temp_dir, gltf_data2, scene, function (newMeshes, particleSystems, skeletons) {
+							//  scene.createDefaultCameraOrLight(true);
+							var ghost = newMeshes[0];
+							var ghostX = 112, ghostZ = 104;
+							ghost.rotationQuaternion = undefined;
+							ghost.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
+							ghost.position = new BABYLON.Vector3(ghostX, y, ghostZ);  // 1칸의 크기는 8
+
+
+							ghost.rotation.y = -90 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
+							//camera.target = obj;
+							//scene.createDefaultCamera(0, 0, 0);
+							var shadowGenerator = new BABYLON.ShadowGenerator(512, light0);
+							shadowGenerator.useContactHardeningShadow = true;
+							shadowGenerator.addShadowCaster(ghost);
+							ghost.receiveShadows = true;
+
+
+							var heroSpeed = 0.2;
+							var heroSpeedBackwards = 0.2;
+							var heroRotationSpeed = 0.1;
+
+							var movedForward = true;
+							var moved = 0
+
+							scene.onBeforeRenderObservable.add(() => {
+								var keydown = false;
+								if (movedForward) {
+									ghost.position.x += heroSpeed;
+									if (ghost.position.x > ghostX + 8) {
+										movedForward = false;
+									}
+									keydown = true;
+								}
+								else {
+									ghost.position.x -= heroSpeed;
+									if (ghost.position.x < ghostX - 8) {
+										movedForward = true;
+									}
+									keydown = true;
+								}
+
+								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
+								if (n1.x == n2.x && n1.z == n2.z) {
+									if (hitted && !hitCheck) {
+										console.log("You Die!");
+										hitCheck = true;
+										dead = true;
+									}
+									else if (!hitCheck) {
+										console.log("Hitted by ghost");
+										hitted = true;
+										hitCheck = true;
+									} else {
+
+									}
+								} else {
+									if (hitCheck && !dead) {
+										hitCheck = false;
+									}
+								}
+							});
+						});
+						BABYLON.SceneLoader.ImportMesh("", temp_dir, gltf_data2, scene, function (newMeshes, particleSystems, skeletons) {
+							//  scene.createDefaultCameraOrLight(true);
+							var ghost = newMeshes[0];
+							var ghostX = 120, ghostZ = 112;
+							ghost.rotationQuaternion = undefined;
+							ghost.scaling = new BABYLON.Vector3(0.05, 0.06, 0.05);
+							ghost.position = new BABYLON.Vector3(ghostX, y, ghostZ);  // 1칸의 크기는 8
+
+
+							ghost.rotation.y = 0 / 180 * Math.PI + walk_dir;  // 객체의 방향을 정할 수 있는 부분
+							//camera.target = obj;
+							//scene.createDefaultCamera(0, 0, 0);
+							var shadowGenerator = new BABYLON.ShadowGenerator(512, light0);
+							shadowGenerator.useContactHardeningShadow = true;
+							shadowGenerator.addShadowCaster(ghost);
+							ghost.receiveShadows = true;
+
+
+							var heroSpeed = 0.2;
+							var heroSpeedBackwards = 0.2;
+							var heroRotationSpeed = 0.1;
+
+							var movedForward = true;
+							var moved = 0
+
+							scene.onBeforeRenderObservable.add(() => {
+								var keydown = false;
+								if (movedForward) {
+									ghost.position.z += heroSpeed;
+									if (ghost.position.z > ghostZ + 8) {
+										movedForward = false;
+									}
+									keydown = true;
+								}
+								else {
+									ghost.position.z -= heroSpeed;
+									if (ghost.position.z < ghostZ - 8) {
+										movedForward = true;
+									}
+									keydown = true;
+								}
+
+								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
+								if (n1.x == n2.x && n1.z == n2.z) {
+									if (hitted && !hitCheck) {
+										console.log("You Die!");
+										hitCheck = true;
+										dead = true;
+									}
+									else if (!hitCheck) {
+										console.log("Hitted by ghost");
 										hitted = true;
 										hitCheck = true;
 									} else {
