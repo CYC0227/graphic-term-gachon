@@ -1,3 +1,6 @@
+데모영상: https://www.youtube.com/watch?v=48gif1la7Xk
+
+
 # Ghost Maze Runner 
 This is a Gachon University computer graphics term project.
 ## Info
