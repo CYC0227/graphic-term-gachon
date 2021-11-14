@@ -549,7 +549,7 @@
 							var heroRotationSpeed = 0.1;
 
 							var movedForward = true;
-							var moved = 0
+							var killed = false;
 
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
@@ -570,21 +570,19 @@
 
 								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									if (hitted && !hitCheck) {
-										console.log("You Die!");
-										hitCheck = true;
-										dead = true;
+									if (hitted) {
+										if (!killed) {
+											console.log("You Die!");
+											hitCheck = true;
+											dead = true;
+										}
 									}
-									else if (!hitCheck) {
+									else if (!killed) {
 										console.log("Hitted by ghost");
+										killed = true;
 										hitted = true;
-										hitCheck = true;
 									} else {
 
-									}
-								} else {
-									if (hitCheck && !dead) {
-										hitCheck = false;
 									}
 								}
 							});
@@ -612,7 +610,7 @@
 							var heroRotationSpeed = 0.1;
 
 							var movedForward = true;
-							var moved = 0
+							var killed = false;
 
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
@@ -633,21 +631,19 @@
 
 								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									if (hitted && !hitCheck) {
-										console.log("You Die!");
-										hitCheck = true;
-										dead = true;
+									if (hitted) {
+										if (!killed) {
+											console.log("You Die!");
+											hitCheck = true;
+											dead = true;
+										}
 									}
-									else if (!hitCheck) {
+									else if (!killed) {
 										console.log("Hitted by ghost");
+										killed = true;
 										hitted = true;
-										hitCheck = true;
 									} else {
 
-									}
-								} else {
-									if (hitCheck && !dead) {
-										hitCheck = false;
 									}
 								}
 							});
@@ -675,7 +671,7 @@
 							var heroRotationSpeed = 0.1;
 
 							var movedForward = true;
-							var moved = 0
+							var killed = false;
 
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
@@ -696,21 +692,19 @@
 
 								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									if (hitted && !hitCheck) {
-										console.log("You Die!");
-										hitCheck = true;
-										dead = true;
+									if (hitted) {
+										if (!killed) {
+											console.log("You Die!");
+											hitCheck = true;
+											dead = true;
+										}
 									}
-									else if (!hitCheck) {
+									else if (!killed) {
 										console.log("Hitted by ghost");
+										killed = true;
 										hitted = true;
-										hitCheck = true;
 									} else {
 
-									}
-								} else {
-									if (hitCheck && !dead) {
-										hitCheck = false;
 									}
 								}
 							});
@@ -738,7 +732,7 @@
 							var heroRotationSpeed = 0.1;
 
 							var movedForward = true;
-							var moved = 0
+							var killed = false;
 
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
@@ -759,21 +753,19 @@
 
 								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									if (hitted && !hitCheck) {
-										console.log("You Die!");
-										hitCheck = true;
-										dead = true;
+									if (hitted) {
+										if (!killed) {
+											console.log("You Die!");
+											hitCheck = true;
+											dead = true;
+										}
 									}
-									else if (!hitCheck) {
+									else if (!killed) {
 										console.log("Hitted by ghost");
+										killed = true;
 										hitted = true;
-										hitCheck = true;
 									} else {
 
-									}
-								} else {
-									if (hitCheck && !dead) {
-										hitCheck = false;
 									}
 								}
 							});
@@ -801,7 +793,7 @@
 							var heroRotationSpeed = 0.1;
 
 							var movedForward = true;
-							var moved = 0
+							var killed = false;
 
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
@@ -822,21 +814,19 @@
 
 								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									if (hitted && !hitCheck) {
-										console.log("You Die!");
-										hitCheck = true;
-										dead = true;
+									if (hitted) {
+										if (!killed) {
+											console.log("You Die!");
+											hitCheck = true;
+											dead = true;
+										}
 									}
-									else if (!hitCheck) {
+									else if (!killed) {
 										console.log("Hitted by ghost");
+										killed = true;
 										hitted = true;
-										hitCheck = true;
 									} else {
 
-									}
-								} else {
-									if (hitCheck && !dead) {
-										hitCheck = false;
 									}
 								}
 							});
@@ -864,7 +854,7 @@
 							var heroRotationSpeed = 0.1;
 
 							var movedForward = true;
-							var moved = 0
+							var killed = false;
 
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
@@ -885,21 +875,19 @@
 
 								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									if (hitted && !hitCheck) {
-										console.log("You Die!");
-										hitCheck = true;
-										dead = true;
+									if (hitted) {
+										if (!killed) {
+											console.log("You Die!");
+											hitCheck = true;
+											dead = true;
+										}
 									}
-									else if (!hitCheck) {
+									else if (!killed) {
 										console.log("Hitted by ghost");
+										killed = true;
 										hitted = true;
-										hitCheck = true;
 									} else {
 
-									}
-								} else {
-									if (hitCheck && !dead) {
-										hitCheck = false;
 									}
 								}
 							});
@@ -927,7 +915,7 @@
 							var heroRotationSpeed = 0.1;
 
 							var movedForward = true;
-							var moved = 0
+							var killed = false;
 
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
@@ -948,21 +936,19 @@
 
 								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									if (hitted && !hitCheck) {
-										console.log("You Die!");
-										hitCheck = true;
-										dead = true;
+									if (hitted) {
+										if (!killed) {
+											console.log("You Die!");
+											hitCheck = true;
+											dead = true;
+										}
 									}
-									else if (!hitCheck) {
+									else if (!killed) {
 										console.log("Hitted by ghost");
+										killed = true;
 										hitted = true;
-										hitCheck = true;
 									} else {
 
-									}
-								} else {
-									if (hitCheck && !dead) {
-										hitCheck = false;
 									}
 								}
 							});
@@ -990,7 +976,7 @@
 							var heroRotationSpeed = 0.1;
 
 							var movedForward = true;
-							var moved = 0
+							var killed = false;
 
 							scene.onBeforeRenderObservable.add(() => {
 								var keydown = false;
@@ -1011,21 +997,19 @@
 
 								var n1 = newPosition(ghost.position.x, ghost.position.z), n2 = newPosition(obj.position.x, obj.position.z);
 								if (n1.x == n2.x && n1.z == n2.z) {
-									if (hitted && !hitCheck) {
-										console.log("You Die!");
-										hitCheck = true;
-										dead = true;
+									if (hitted) {
+										if (!killed) {
+											console.log("You Die!");
+											hitCheck = true;
+											dead = true;
+										}
 									}
-									else if (!hitCheck) {
+									else if (!killed) {
 										console.log("Hitted by ghost");
+										killed = true;
 										hitted = true;
-										hitCheck = true;
 									} else {
 
-									}
-								} else {
-									if (hitCheck && !dead) {
-										hitCheck = false;
 									}
 								}
 							});
