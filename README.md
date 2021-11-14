@@ -1,4 +1,4 @@
-발표영상 : https://www.youtube.com/watch?v=9It4h5KUxIo&feature=youtu.be
+발표영상 : https://www.youtube.com/watch?v=9It4h5KUxIo&feature=youtu.be <br>
 데모영상 : https://www.youtube.com/watch?v=48gif1la7Xk
 
 
