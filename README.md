@@ -30,4 +30,4 @@ Players cannot freely pass through the walls of the maze, but ghosts do not.<br>
 You can have a thrilling experience due to a ghost that suddenly appears between walls.
 
 ### 4. Maze background
-In order to enjoy the game more realistically, the background of the maze is composed of bushes.
+In order to enjoy the game more realistically, the background of the maze is composed of bushes.  
